@@ -37,7 +37,7 @@ router.get('/:id', (req,res)=>{
 
 router.post('/', (req, res)=>{
     let product = {title: req.body.title, price: req.body.price, thumbnail: req.body.thumbnail}
-    req.body.title.length > 0 && req.body.price > 0 && req.body.thumbnail > 0 ?
+    req.body.title.length > 0 && req.body.price.length > 0 && req.body.thumbnail.length > 0 ?
     res.json(productos.add(product)) :
     res.json({error:'Debes completar todos los campos'})
 })
