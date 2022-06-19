@@ -44,13 +44,11 @@ router.post('/', (req, res)=>{
 
 router.put('/:id', (req,res)=>{
     let id = parseInt(req.params.id)
-    let prodFinded = products.find(p => p.id === id)
     let prodUpdated = {id: id, title: req.body.title, price: req.body.price, thumbnail: req.body.thumbnail}
-    prodFinded ? res.json(productos.updateById(id, prodUpdated)) : res.json({error:'El producto que quiere actualizar no se existe'})
+    productos.getById(id) ? res.json(productos.updateById(id, prodUpdated)) : res.json({error:'El producto que quiere actualizar no se existe'})
 })
 
 router.delete('/:id', (req,res)=>{
     let id = parseInt(req.params.id)
-    let prodFinded = products.find(p => p.id === id)
-    prodFinded ? res.json(productos.deleteById(id)) : res.json({error:'El producto que quiere eliminar no se existe'})
+    productos.getById(id) ? res.json(productos.deleteById(id)) : res.json({error:'El producto que quiere eliminar no se existe'})
 })
